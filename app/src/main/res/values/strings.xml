@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">A La QaRte</string>
     <string name="tab_text_1">QR Scanner</string>
-    <string name="tab_text_2">Settings</string>
+    <string name="tab_text_2">Account</string>
+    <string name="tab_text_3">Orders</string>
 </resources>
