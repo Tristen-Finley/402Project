@@ -6,10 +6,11 @@
     tools:context=".ui.main.ScannerFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/scan_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="QR Scanner goes here"
+        android:text="Scan Now"
         tools:ignore="HardcodedText" />
 
 </FrameLayout>
