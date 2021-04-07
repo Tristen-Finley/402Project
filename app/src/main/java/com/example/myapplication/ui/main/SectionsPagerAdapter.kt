@@ -6,11 +6,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.myapplication.R
 
-private val TAB_TITLES = arrayOf(
-        R.string.tab_text_1,
-        R.string.tab_text_2
-)
-
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
@@ -18,18 +13,24 @@ private val TAB_TITLES = arrayOf(
 class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     : FragmentPagerAdapter(fm) {
 
+    private val mFragmentList = ArrayList<Fragment>()
+    private val mFragmentTitleList = ArrayList<String>()
+
     override fun getItem(position: Int): Fragment {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return mFragmentList[position]
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
-    }
+   override fun getPageTitle(position: Int): CharSequence? {
+        return mFragmentTitleList[position]
+   }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+        return mFragmentList.size
+    }
+
+    fun addFragment(fragment: Fragment, title : String){
+        mFragmentList.add(fragment)
+        mFragmentTitleList.add(title)
+        notifyDataSetChanged()
     }
 }
