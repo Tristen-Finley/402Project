@@ -9,12 +9,16 @@
     <!-- Preference/Setting Titles -->
     <string name="account_header">Account Info</string>
     <string name="payments_header">Payment Info</string>
+    <string name="preference_header">Preferences</string>
 
     <!-- Account Info Preferences (once was Messages) -->
     <string name="username_title">Username</string>
     <string name="email_title">Email Address</string>
 
     <!-- TODO: remove / change everything below here -->
+   <!-- Preference... Preferences. -->
+    <string name="dark_title">Dark Mode</string>
+
     <string name="reply_title">Default reply action</string>
 
     <!-- Payment Info Preferences (once was Sync Preferences) -->
