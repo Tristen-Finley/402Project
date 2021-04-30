@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">A La QaRte</string>
+    <string name="tab_text_1">QR Scanner</string>
+    <string name="tab_text_2">Account</string>
+    <string name="tab_text_3">Orders</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Preference/Setting Titles -->
+    <string name="account_header">Account Info</string>
+    <string name="payments_header">Payment Info</string>
+    <string name="preference_header">Preferences</string>
+
+    <!-- Account Info Preferences (once was Messages) -->
+    <string name="username_title">Username</string>
+    <string name="email_title">Email Address</string>
+
+    <!-- TODO: remove / change everything below here -->
+   <!-- Preference... Preferences. -->
+    <string name="dark_title">Dark Mode</string>
+
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Payment Info Preferences (once was Sync Preferences) -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+</resources>
