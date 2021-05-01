@@ -1,18 +1,18 @@
 package com.example.myapplication.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.preference.PreferenceFragmentCompat
 import com.example.myapplication.R
 
+class SettingsFragment : PreferenceFragmentCompat() {
 
-class SettingsFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        Toast.makeText(context, "These are your settings", Toast.LENGTH_SHORT).show()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +20,6 @@ class SettingsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
 
+    }
 }
