@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.ScannerFragment">
 
-
     <!-- TODO: Something here (Preference screen layout) -->
     class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -14,5 +13,6 @@
 
         }
     }
+
 
 </FrameLayout>

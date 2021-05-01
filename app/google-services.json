@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "396673939835",
+    "project_id": "silicon-amulet-268121",
+    "storage_bucket": "silicon-amulet-268121.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396673939835:android:ba8027e06941b2f489e5de",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396673939835-379lqpr0467s84g8kho411psvb24on20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcUM2sTJS5Ck-2JC0jAPhJxkW5Uouxq10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396673939835-379lqpr0467s84g8kho411psvb24on20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
