@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.viewpager.widget.ViewPager
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
@@ -29,10 +30,14 @@ class ScannerFragment : Fragment1() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val scannerView = view.findViewById<CodeScannerView>(R.id.scanner_view)
         val activity = requireActivity()
+        val viewModel: MenuFragment.ItemViewModel by activityViewModels()
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
-            val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
-            tab.getTabAt(2)!!.select()
+            activity.runOnUiThread {
+                val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
+                tab.getTabAt(1)!!.select()
+                viewModel.selectItem(it.text)
+            }
         }
         scannerView.setOnClickListener {
             codeScanner.startPreview()

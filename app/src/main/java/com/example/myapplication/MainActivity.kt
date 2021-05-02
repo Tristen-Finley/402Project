@@ -9,6 +9,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.ui.main.MenuFragment
 import com.example.myapplication.ui.main.ScannerFragment
 import com.example.myapplication.ui.main.SectionsPagerAdapter
