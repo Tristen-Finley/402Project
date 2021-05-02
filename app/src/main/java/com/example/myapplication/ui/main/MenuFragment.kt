@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,14 +17,6 @@ import com.example.myapplication.R
 
 class MenuFragment : Fragment() {
 
-    class ItemViewModel : ViewModel() {
-        private val mutableSelectedItem = MutableLiveData<String>()
-        val selectedItem: LiveData<String> get() = mutableSelectedItem
-
-        fun selectItem(item: String) {
-            mutableSelectedItem.value = item
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,14 +26,14 @@ class MenuFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
 
-    override fun onResume() {
-        val viewModel: ItemViewModel by viewModels()
-        println("switched")
-        viewModel.selectedItem.observe(viewLifecycleOwner, Observer { item ->
+    private val model: SharedViewModel by activityViewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+        model.selected.observe(viewLifecycleOwner, Observer { item ->
             Toast.makeText(context, item, Toast.LENGTH_LONG).show()
-            println("lamo")
             println(item)
         })
-        super.onResume()
     }
+
+
 }
