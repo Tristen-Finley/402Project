@@ -1,28 +1,28 @@
 package com.example.myapplication.ui.main
 
-import android.R.attr
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
+import androidx.viewpager.widget.ViewPager
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.example.myapplication.R
+import com.google.android.material.tabs.TabLayout
+import java.sql.*
+import java.util.*
 import androidx.fragment.app.Fragment as Fragment1
+
 
 class ScannerFragment : Fragment1() {
 
     private lateinit var codeScanner: CodeScanner
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_scanner, container, false)
     }
 
@@ -31,9 +31,8 @@ class ScannerFragment : Fragment1() {
         val activity = requireActivity()
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
-            activity.runOnUiThread {
-                Toast.makeText(activity, it.text, Toast.LENGTH_LONG).show()
-            }
+            val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
+            tab.getTabAt(2)!!.select()
         }
         scannerView.setOnClickListener {
             codeScanner.startPreview()
