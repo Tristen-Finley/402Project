@@ -62,14 +62,15 @@ object MySQLDatabaseExampleKotlin {
 
 
             stmt = conn!!.createStatement()
-            resultset = stmt!!.executeQuery("SHOW DATABASES;")
+            resultset = stmt!!.executeQuery("select * from item where cat_id = 3;")
 
-            if (stmt.execute("SHOW DATABASES;")) {
+            if (stmt.execute("select * from item where cat_id = 3;")) {
                 resultset = stmt.resultSet
             }
 
             while (resultset!!.next()) {
-                println(resultset.getString("Database"))
+                println(resultset.getString("item_name"))
+                println(resultset.getString("item_price"))
             }
     }
 
@@ -85,7 +86,7 @@ object MySQLDatabaseExampleKotlin {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         Class.forName("com.mysql.jdbc.Driver").newInstance()
-        conn = DriverManager.getConnection("jdbc:" + "mysql" + "://" + "boostem.net" + ":" + "3306" + "/", connectionProps)
+        conn = DriverManager.getConnection("jdbc:" + "mysql" + "://" + "boostem.net" + ":" + "3306" + "/sgnet_kotlin", connectionProps)
 
     }
 }
