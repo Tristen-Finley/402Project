@@ -56,24 +56,23 @@ object MySQLDatabaseExampleKotlin {
 
         getConnection()
         // execute the query via connection object
-        executeMySQLQuery()
+        executeMySQLQuery("3")
     }
 
-    fun executeMySQLQuery() {
+    fun executeMySQLQuery(code : String) {
         var stmt: Statement? = null
         var resultset: ResultSet? = null
 
 
             stmt = conn!!.createStatement()
-            resultset = stmt!!.executeQuery("select * from item where cat_id = 3;")
+            resultset = stmt!!.executeQuery("select * from item where cat_id = " + code + ";")
 
-            if (stmt.execute("select * from item where cat_id = 3;")) {
+            if (stmt.execute("select * from item where cat_id = " + code + ";")) {
                 resultset = stmt.resultSet
             }
 
             while (resultset!!.next()) {
-                println(resultset.getString("item_name"))
-                println(resultset.getString("item_price"))
+                println(resultset.getString("item_name") + " " + resultset.getString("item_price"))
             }
     }
 
