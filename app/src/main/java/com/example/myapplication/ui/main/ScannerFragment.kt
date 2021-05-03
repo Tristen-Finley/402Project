@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.example.myapplication.R
 import com.google.android.material.tabs.TabLayout
-import java.sql.*
-import java.util.*
 import androidx.fragment.app.Fragment as Fragment1
 
 class ScannerFragment : Fragment1() {
@@ -37,6 +33,7 @@ class ScannerFragment : Fragment1() {
         codeScanner.decodeCallback = DecodeCallback {
             activity.runOnUiThread {
                 model.select(it.text)
+                Toast.makeText(context, it.text, Toast.LENGTH_LONG).show()
                 val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
                 tab.getTabAt(1)!!.select()
             }

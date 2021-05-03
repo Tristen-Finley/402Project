@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         MySQLDatabaseExampleKotlin.main()
         setUpTabs()
-
     }
 
     private fun setUpTabs(){
@@ -59,21 +58,23 @@ object MySQLDatabaseExampleKotlin {
         executeMySQLQuery("3")
     }
 
-    fun executeMySQLQuery(code : String) {
+    fun executeMySQLQuery(code : String): ArrayList<String> {
         var stmt: Statement? = null
         var resultset: ResultSet? = null
+        var items = ArrayList<String>()
 
+        stmt = conn!!.createStatement()
+        resultset = stmt!!.executeQuery("select * from item where cat_id = " + code[0] + ";")
 
-            stmt = conn!!.createStatement()
-            resultset = stmt!!.executeQuery("select * from item where cat_id = " + code + ";")
+        if (stmt.execute("select * from item where cat_id = " + code[0] + ";")) {
+            resultset = stmt.resultSet
+        }
 
-            if (stmt.execute("select * from item where cat_id = " + code + ";")) {
-                resultset = stmt.resultSet
-            }
+        while (resultset!!.next()) {
+            items.plusAssign(resultset.getString("item_name") + " " + resultset.getString("item_price"))
+        }
 
-            while (resultset!!.next()) {
-                println(resultset.getString("item_name") + " " + resultset.getString("item_price"))
-            }
+        return items
     }
 
     /**
