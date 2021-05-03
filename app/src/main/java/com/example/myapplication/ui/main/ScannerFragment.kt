@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
+import com.example.myapplication.MainActivity
+import com.example.myapplication.MySQLDatabaseExampleKotlin
 import com.example.myapplication.R
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.Fragment as Fragment1
@@ -32,12 +34,13 @@ class ScannerFragment : Fragment1() {
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
             activity.runOnUiThread {
-                model.select(it.text)
+                MySQLDatabaseExampleKotlin.qrcode = it.text
                 Toast.makeText(context, it.text, Toast.LENGTH_LONG).show()
                 val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
                 tab.getTabAt(1)!!.select()
             }
         }
+
         scannerView.setOnClickListener {
             codeScanner.startPreview()
         }

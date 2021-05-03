@@ -23,6 +23,8 @@ import java.util.Properties
 
 class MainActivity : AppCompatActivity() {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -49,24 +51,23 @@ object MySQLDatabaseExampleKotlin {
     private var conn: Connection? = null
     private var username = "sgnet" // provide the username
     private var password = "436qxvRco6" // provide the corresponding password
+    public var qrcode = "1"
 
     @JvmStatic fun main() {
         // make a connection to MySQL Server
-
         getConnection()
         // execute the query via connection object
-        executeMySQLQuery("3")
     }
 
-    fun executeMySQLQuery(code : String): ArrayList<String> {
+    fun executeMySQLQuery(): ArrayList<String> {
         var stmt: Statement? = null
         var resultset: ResultSet? = null
         var items = ArrayList<String>()
 
         stmt = conn!!.createStatement()
-        resultset = stmt!!.executeQuery("select * from item where cat_id = " + code[0] + ";")
+        resultset = stmt!!.executeQuery("select * from item where cat_id = " + qrcode[0] + ";")
 
-        if (stmt.execute("select * from item where cat_id = " + code[0] + ";")) {
+        if (stmt.execute("select * from item where cat_id = " + qrcode[0]+ ";")) {
             resultset = stmt.resultSet
         }
 
