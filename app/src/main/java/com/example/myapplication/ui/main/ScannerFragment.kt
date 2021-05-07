@@ -34,8 +34,6 @@ class ScannerFragment : Fragment1() {
         codeScanner = CodeScanner(activity, scannerView)
         codeScanner.decodeCallback = DecodeCallback {
             activity.runOnUiThread {
-                MySQLDatabaseExampleKotlin.qrcode = it.text
-                Toast.makeText(context, it.text, Toast.LENGTH_LONG).show()
                 val tab = getActivity()?.findViewById<View>(R.id.tabs) as TabLayout
                 tab.getTabAt(1)!!.select()
             }

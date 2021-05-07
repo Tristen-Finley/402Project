@@ -19,11 +19,7 @@ import com.example.myapplication.ui.main.SettingsFragment
 import java.sql.*
 import java.util.Properties
 
-
-
 class MainActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +42,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
 object MySQLDatabaseExampleKotlin {
 
     private var conn: Connection? = null
     private var username = "sgnet" // provide the username
     private var password = "436qxvRco6" // provide the corresponding password
-    public var qrcode = "1"
 
     @JvmStatic fun main() {
         // make a connection to MySQL Server
@@ -65,16 +61,15 @@ object MySQLDatabaseExampleKotlin {
         var items = ArrayList<String>()
 
         stmt = conn!!.createStatement()
-        resultset = stmt!!.executeQuery("select * from item where cat_id = " + qrcode[0] + ";")
+        resultset = stmt!!.executeQuery("select * from item;")
 
-        if (stmt.execute("select * from item where cat_id = " + qrcode[0]+ ";")) {
+        if (stmt.execute("select * from item;")) {
             resultset = stmt.resultSet
         }
 
         while (resultset!!.next()) {
             items.plusAssign(resultset.getString("item_name") + " " + resultset.getString("item_price"))
         }
-
         return items
     }
 
@@ -91,6 +86,5 @@ object MySQLDatabaseExampleKotlin {
         StrictMode.setThreadPolicy(policy)
         Class.forName("com.mysql.jdbc.Driver").newInstance()
         conn = DriverManager.getConnection("jdbc:" + "mysql" + "://" + "boostem.net" + ":" + "3306" + "/sgnet_kotlin", connectionProps)
-
     }
 }
